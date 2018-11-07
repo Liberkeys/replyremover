@@ -141,3 +141,7 @@ func TestRetainsBullets(t *testing.T) {
 func TestUnquotedReply(t *testing.T) {
 	testFixture("email_unquoted_reply", "This is my reply.", t)
 }
+
+func TestLiberkeysGSuiteSignature(t *testing.T) {
+	testFixture("liberkeys_gsuite_signature", "Ceci est un email.", t)
+}
