@@ -149,3 +149,16 @@ func TestLiberkeysGSuiteSignature(t *testing.T) {
 func TestQuotedQuoteHeader(t *testing.T) {
 	testFixture("quoted_quote_header", "Ceci est un email.", t)
 }
+
+func TestStrangeCaseWithoutReply(t *testing.T) {
+	body := `Toto,
+
+Le rendez vous est bien confirmé à 10h30. Vous retrouverez ma collaboratrice Tata Toto je vous joins son numéro si nécessaire 06 12 34 56 78.
+
+Bien à vous,`
+	testFixture("strange_case_without_reply", body, t)
+}
+
+func TestLiberkeysNewSignature(t *testing.T) {
+	testFixture("liberkeys_new_signature", "Ceci est un email.", t)
+}
