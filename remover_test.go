@@ -162,3 +162,28 @@ Bien à vous,`
 func TestLiberkeysNewSignature(t *testing.T) {
 	testFixture("liberkeys_new_signature", "Ceci est un email.", t)
 }
+
+func TestLiberkeysStrangeCase(t *testing.T) {
+	body := `Bonjour Monsieur XXX,
+
+Pour rappel, notre package à *2990**€* inclut:
+
+*- Accompagnement complet, de l’estimation à l'acte authentique*
+*- Partenariat pour les diagnostics ( -15€ avec le code LIBERDIAG
+chez allodiagnostic.com <http://allodiagnostic.com/> ou depuis votre compte
+Liberkeys)*
+*- Shooting photo professionnel *
+*- Diffusion immédiate des biens sur 40 portails avec budget marketing pour
+être toujours en tête de liste*
+*- Organisation et réalisation des visites*
+*- Vérification de la fiabilité et de la solvabilité des acquéreurs*
+*- Négociation des offres*
+*- Accompagnement jusqu'à l'acte authentique.*
+
+*=> Le tout via notre Web Application qui vous permet de suivre et
+contrôler les ventes en toute transparence.*
+*=> Seulement 2990**€ **au succès*
+
+Blablabla`
+	testFixture("liberkeys_strange_case", body, t)
+}
