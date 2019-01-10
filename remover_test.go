@@ -146,6 +146,10 @@ func TestLiberkeysGSuiteSignature(t *testing.T) {
 	testFixture("liberkeys_gsuite_signature", "Ceci est un email.", t)
 }
 
+func TestLiberkeysGSuiteSignature2(t *testing.T) {
+	testFixture("liberkeys_gsuite_signature2", "Ceci est un email.", t)
+}
+
 func TestQuotedQuoteHeader(t *testing.T) {
 	testFixture("quoted_quote_header", "Ceci est un email.", t)
 }
