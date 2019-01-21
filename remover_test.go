@@ -191,3 +191,15 @@ contrôler les ventes en toute transparence.*
 Blablabla`
 	testFixture("liberkeys_strange_case", body, t)
 }
+
+func TestLiberkeysStrangeCase2(t *testing.T) {
+	str := getFixture("liberkeys_strange_case2", t)
+	withoutReplies := RemoveReplies(str)
+	if len(withoutReplies) < len(str)-150 {
+		scanner := bufio.NewScanner(strings.NewReader(withoutReplies))
+		for scanner.Scan() {
+			t.Log(scanner.Text())
+		}
+		t.Errorf("Strings does not match")
+	}
+}

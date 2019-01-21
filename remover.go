@@ -36,7 +36,7 @@ func init() {
 		regexp.MustCompile(`(?ms)^(20[0-9]{2}\-(?:0?[1-9]|1[012])\-(?:0?[0-9]|[1-2][0-9]|3[01]|[1-9])\s[0-2]?[0-9]:\d{2}\s.+?:)$`),
 		regexp.MustCompile(`(?ms)^[\s>]*([a-z]{3,4}\.\s.+\sskrev\s.+:)$`),
 		regexp.MustCompile(`(?ms)^(\[image\:\s.+\](.+){0,100}\*.+\*)$`),
-		regexp.MustCompile(`(?ms)^\*(.*)\*.{1,50}\*.{1,100}liberkeys\.com.*\*$`),
+		regexp.MustCompile(`(?ms)^\*(.{1,100})\*.{1,50}\*.{1,100}liberkeys\.com.*\*$`),
 		regexp.MustCompile(`(?ms)^\s{3,}\*.*\*.{1,100}liberkeys\.com.*$`),
 		regexp.MustCompile(`(?ms)^.*(<div dir="ltr">).*$`),
 	}
