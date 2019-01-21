@@ -7,18 +7,18 @@ import (
 )
 
 var (
-	signatureRegex    = regexp.MustCompile(`(?s)(?:^\s*--|^\s*__|^-\w|^-- $)|(?:^Sent from my (?:\s*\w+){1,4}$)|(?:^={30,}$)$`)
+	signatureRegex    = regexp.MustCompile(`(?s)(?:^\s*--|^\s*__|^-\w|^-- $)|(?:^(Sent from my|Envoyé de mon) (?:\s*\w+){1,4}$)|(?:^={30,}$)$`)
 	quoteRegex        = regexp.MustCompile(`(?s)^>+`)
 	quoteHeadersRegex []*regexp.Regexp
 )
 
 func init() {
 	quoteHeadersRegex = []*regexp.Regexp{
-		regexp.MustCompile(`(?ms)^[\s>]*(On\s+.*\s+wrote:)$`),
-		regexp.MustCompile(`(?ms)^[\s>]*(Le\s+.*\s+écrit :)$`),
-		regexp.MustCompile(`(?ms)^[\s>]*(El\s+.*\s+escribió:)$`),
-		regexp.MustCompile(`(?ms)^[\s>]*(Il\s+.*\s+scritto:)$`),
-		regexp.MustCompile(`(?ms)^[\s>]*(El\s+.*\s+escriure:)$`),
+		regexp.MustCompile(`(?ms)^[\s>]*(On\s{1,10}.{1,100}\s+wrote:)$`),
+		regexp.MustCompile(`(?ms)^[\s>]*(Le{1,10}.{1,100}\s+écrit :)$`),
+		regexp.MustCompile(`(?ms)^[\s>]*(El{1,10}.{1,100}\s+escribió:)$`),
+		regexp.MustCompile(`(?ms)^[\s>]*(Il{1,10}.{1,100}\s+scritto:)$`),
+		regexp.MustCompile(`(?ms)^[\s>]*(El{1,10}.{1,100}\s+escriure:)$`),
 		regexp.MustCompile(`(?m)^.+\s+(написа(л|ла|в)+)+:$`),
 		regexp.MustCompile(`(?ms)^[\s>]*(Op\s.+?schreef.+:)$`),
 		regexp.MustCompile(`(?ms)^[\s>]*((W\sdniu|Dnia)\s.+?(pisze|napisał(\(a\))?):)$`),

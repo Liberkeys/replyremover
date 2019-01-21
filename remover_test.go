@@ -24,12 +24,16 @@ func getFixture(name string, t *testing.T) string {
 	return string(b)
 }
 
+func dump(str string, t *testing.T) {
+	scanner := bufio.NewScanner(strings.NewReader(str))
+	for scanner.Scan() {
+		t.Log(scanner.Text())
+	}
+}
+
 func compare(str1, str2 string, t *testing.T) {
 	if str1 != str2 {
-		scanner := bufio.NewScanner(strings.NewReader(str2))
-		for scanner.Scan() {
-			t.Log(scanner.Text())
-		}
+		dump(str2, t)
 		t.Error("Strings does not match")
 	}
 }
@@ -108,6 +112,10 @@ func TestEmailGmailNo(t *testing.T) {
 
 func TestParseOutSentFromIPhone(t *testing.T) {
 	testFixture("email_iphone", "Here is another email", t)
+}
+
+func TestParseOutSentFromIPhoneFR(t *testing.T) {
+	testFixture("email_iphone2", "Here is another email", t)
 }
 
 func TestParseOutSentFromBlackBerry(t *testing.T) {
@@ -196,10 +204,7 @@ func TestLiberkeysStrangeCase2(t *testing.T) {
 	str := getFixture("liberkeys_strange_case2", t)
 	withoutReplies := RemoveReplies(str)
 	if len(withoutReplies) < len(str)-150 {
-		scanner := bufio.NewScanner(strings.NewReader(withoutReplies))
-		for scanner.Scan() {
-			t.Log(scanner.Text())
-		}
+		dump(withoutReplies, t)
 		t.Errorf("Strings does not match")
 	}
 }
